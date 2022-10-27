@@ -20,5 +20,4 @@ namespace Cafe.Entity
         public int DishId{ get; set; }
         public virtual Dish? Dish { get; set; }
     }
-#warning поставить ? virtual 
 }
