@@ -20,5 +20,10 @@ namespace Cafe.Entity
 
         [Column("count_person")]
         public int CountPerson { get; set; }
+
+        [ForeignKey(nameof(Person))]
+        [Column("person_id")]
+        public int PersonId { get; set; }
+        public virtual Person? Person { get; set; }
     }
 }

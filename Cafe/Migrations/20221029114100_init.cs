@@ -103,6 +103,28 @@ namespace Cafe.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "person",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    first_name = table.Column<string>(type: "text", nullable: true),
+                    last_name = table.Column<string>(type: "text", nullable: true),
+                    age = table.Column<int>(type: "integer", nullable: false),
+                    role_id = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_person", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_person_role_role_id",
+                        column: x => x.role_id,
+                        principalTable: "role",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "table",
                 columns: table => new
                 {
@@ -117,26 +139,6 @@ namespace Cafe.Migrations
                         name: "FK_table_type_table_type_table",
                         column: x => x.type_table,
                         principalTable: "type_table",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "delivery",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    address = table.Column<string>(type: "text", nullable: true),
-                    dish_id = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_delivery", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_delivery_dish_dish_id",
-                        column: x => x.dish_id,
-                        principalTable: "dish",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -168,6 +170,33 @@ namespace Cafe.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "delivery",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    dish_id = table.Column<int>(type: "integer", nullable: false),
+                    person_id = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_delivery", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_delivery_dish_dish_id",
+                        column: x => x.dish_id,
+                        principalTable: "dish",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_delivery_person_person_id",
+                        column: x => x.person_id,
+                        principalTable: "person",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "order",
                 columns: table => new
                 {
@@ -175,7 +204,8 @@ namespace Cafe.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     table_id = table.Column<int>(type: "integer", nullable: false),
                     dish_id = table.Column<int>(type: "integer", nullable: false),
-                    count_person = table.Column<int>(type: "integer", nullable: false)
+                    count_person = table.Column<int>(type: "integer", nullable: false),
+                    person_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -184,6 +214,12 @@ namespace Cafe.Migrations
                         name: "FK_order_dish_dish_id",
                         column: x => x.dish_id,
                         principalTable: "dish",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_order_person_person_id",
+                        column: x => x.person_id,
+                        principalTable: "person",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -198,6 +234,11 @@ namespace Cafe.Migrations
                 name: "IX_delivery_dish_id",
                 table: "delivery",
                 column: "dish_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_delivery_person_id",
+                table: "delivery",
+                column: "person_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_dish_category_dish_id",
@@ -225,9 +266,19 @@ namespace Cafe.Migrations
                 column: "dish_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_order_person_id",
+                table: "order",
+                column: "person_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_order_table_id",
                 table: "order",
                 column: "table_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_person_role_id",
+                table: "person",
+                column: "role_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_table_type_table",
@@ -247,13 +298,13 @@ namespace Cafe.Migrations
                 name: "order");
 
             migrationBuilder.DropTable(
-                name: "role");
-
-            migrationBuilder.DropTable(
                 name: "indredient");
 
             migrationBuilder.DropTable(
                 name: "dish");
+
+            migrationBuilder.DropTable(
+                name: "person");
 
             migrationBuilder.DropTable(
                 name: "table");
@@ -263,6 +314,9 @@ namespace Cafe.Migrations
 
             migrationBuilder.DropTable(
                 name: "category_dish");
+
+            migrationBuilder.DropTable(
+                name: "role");
 
             migrationBuilder.DropTable(
                 name: "type_table");

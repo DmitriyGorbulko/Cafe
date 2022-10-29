@@ -17,5 +17,10 @@ namespace Cafe.Entity
         [Column("dish_id")]
         public int DishId { get; set; }
         public virtual Dish? Dish { get; set; }
+
+        [ForeignKey(nameof(Person))]
+        [Column("person_id")]
+        public int PersonId { get; set; }
+        public virtual Person? Person{ get; set; }
     }
 }

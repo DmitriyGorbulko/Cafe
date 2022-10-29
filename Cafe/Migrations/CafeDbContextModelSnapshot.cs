@@ -68,9 +68,15 @@ namespace Cafe.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("dish_id");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("integer")
+                        .HasColumnName("person_id");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DishId");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("delivery");
                 });
@@ -170,6 +176,10 @@ namespace Cafe.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("dish_id");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("integer")
+                        .HasColumnName("person_id");
+
                     b.Property<int>("TableId")
                         .HasColumnType("integer")
                         .HasColumnName("table_id");
@@ -178,9 +188,42 @@ namespace Cafe.Migrations
 
                     b.HasIndex("DishId");
 
+                    b.HasIndex("PersonId");
+
                     b.HasIndex("TableId");
 
                     b.ToTable("order");
+                });
+
+            modelBuilder.Entity("Cafe.Entity.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("integer")
+                        .HasColumnName("age");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text")
+                        .HasColumnName("first_name");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text")
+                        .HasColumnName("last_name");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("role_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("person");
                 });
 
             modelBuilder.Entity("Cafe.Entity.Role", b =>
@@ -248,7 +291,15 @@ namespace Cafe.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Cafe.Entity.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Dish");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Cafe.Entity.Dish", b =>
@@ -300,6 +351,12 @@ namespace Cafe.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Cafe.Entity.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Cafe.Entity.Table", "Table")
                         .WithMany()
                         .HasForeignKey("TableId")
@@ -308,7 +365,20 @@ namespace Cafe.Migrations
 
                     b.Navigation("Dish");
 
+                    b.Navigation("Person");
+
                     b.Navigation("Table");
+                });
+
+            modelBuilder.Entity("Cafe.Entity.Person", b =>
+                {
+                    b.HasOne("Cafe.Entity.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Cafe.Entity.Table", b =>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cafe.Entity
@@ -19,6 +20,6 @@ namespace Cafe.Entity
         [ForeignKey(nameof(CategoryDish))]
         [Column("category_dish_id")]
         public int CategoryDishId { get; set; }
-        public virtual CategoryDish? CategoryDish { get; set; } 
+        public virtual CategoryDish? CategoryDish { get; set; }
     }
 }

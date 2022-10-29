@@ -15,6 +15,7 @@ namespace Cafe
         public DbSet<CategoryDish> CategoryDishes { get; set; }
         public DbSet<CategoryIngredient> CategoryIngredients { get; set; }
         public DbSet<TypeTable> TypeTables { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         public CafeDbContext(DbContextOptions<CafeDbContext> options) : base(options)
         {
