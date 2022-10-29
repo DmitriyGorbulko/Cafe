@@ -230,6 +230,30 @@ namespace Cafe.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "order_dish",
+                columns: table => new
+                {
+                    order_id = table.Column<int>(type: "integer", nullable: false),
+                    dish_id = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_order_dish", x => new { x.order_id, x.dish_id });
+                    table.ForeignKey(
+                        name: "FK_order_dish_dish_dish_id",
+                        column: x => x.dish_id,
+                        principalTable: "dish",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_order_dish_order_order_id",
+                        column: x => x.order_id,
+                        principalTable: "order",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_delivery_dish_id",
                 table: "delivery",
@@ -276,6 +300,11 @@ namespace Cafe.Migrations
                 column: "table_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_order_dish_dish_id",
+                table: "order_dish",
+                column: "dish_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_person_role_id",
                 table: "person",
                 column: "role_id");
@@ -295,10 +324,16 @@ namespace Cafe.Migrations
                 name: "ingredient_to_dish");
 
             migrationBuilder.DropTable(
-                name: "order");
+                name: "order_dish");
 
             migrationBuilder.DropTable(
                 name: "indredient");
+
+            migrationBuilder.DropTable(
+                name: "order");
+
+            migrationBuilder.DropTable(
+                name: "category_inrgedient");
 
             migrationBuilder.DropTable(
                 name: "dish");
@@ -308,9 +343,6 @@ namespace Cafe.Migrations
 
             migrationBuilder.DropTable(
                 name: "table");
-
-            migrationBuilder.DropTable(
-                name: "category_inrgedient");
 
             migrationBuilder.DropTable(
                 name: "category_dish");

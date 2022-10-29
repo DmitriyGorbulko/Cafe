@@ -195,6 +195,23 @@ namespace Cafe.Migrations
                     b.ToTable("order");
                 });
 
+            modelBuilder.Entity("Cafe.Entity.OrderDish", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer")
+                        .HasColumnName("order_id");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("integer")
+                        .HasColumnName("dish_id");
+
+                    b.HasKey("OrderId", "DishId");
+
+                    b.HasIndex("DishId");
+
+                    b.ToTable("order_dish");
+                });
+
             modelBuilder.Entity("Cafe.Entity.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -368,6 +385,25 @@ namespace Cafe.Migrations
                     b.Navigation("Person");
 
                     b.Navigation("Table");
+                });
+
+            modelBuilder.Entity("Cafe.Entity.OrderDish", b =>
+                {
+                    b.HasOne("Cafe.Entity.Dish", "Dish")
+                        .WithMany()
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cafe.Entity.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dish");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Cafe.Entity.Person", b =>
