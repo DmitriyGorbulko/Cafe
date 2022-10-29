@@ -11,13 +11,15 @@ namespace Cafe
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             return services
-                .AddScoped<ITypeTableRepository, TypeTableRepository>();
+                .AddScoped<ITypeTableRepository, TypeTableRepository>()
+                .AddScoped<ICategoryIngredientRepository, CategoryIngredientRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             return services
-                .AddScoped<ITypeTableService, TypeTableService>();
+                .AddScoped<ITypeTableService, TypeTableService>()
+                .AddScoped<ICategoryIngredientService, CategoryIngredientService>();
         }
     }
 }

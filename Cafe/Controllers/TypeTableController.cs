@@ -17,6 +17,13 @@ namespace Cafe.Controllers
         {
             _typeTableService = typeTableService;
         }
+        
+        [HttpPost]
+        [Route("/create_type_table")]
+        public async Task<ActionResult<TypeTable>> Create(TypeTable typeTable)
+        {
+            return Ok(await _typeTableService.Create(typeTable));
+        }
 
         [HttpGet]
         [Route("/get_type_table")]
@@ -32,6 +39,13 @@ namespace Cafe.Controllers
             return Ok(await _typeTableService.GetAll());
         }
 
+        [HttpPut]
+        [Route("/update_type_table")]
+        public async Task<ActionResult<TypeTable>> Update(TypeTable typeTable)
+        {
+            return Ok(await _typeTableService.Update(typeTable));
+        }
+
         [HttpDelete]
         [Route("/delete_type_table")]
         public async Task Delete(int id)
@@ -39,11 +53,6 @@ namespace Cafe.Controllers
             await _typeTableService.Delete(id);
         }
 
-        [HttpPost]
-        [Route("/create_type_table")]
-        public async Task<ActionResult<TypeTable>> Create(TypeTable typeTable)
-        {
-            return Ok(await _typeTableService.Create(typeTable));
-        }
+        
     }
 }
