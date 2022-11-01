@@ -5,6 +5,11 @@ namespace Cafe
 {
     public class CafeDbContext : DbContext
     {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<OrderDish>()
+            .HasKey(o => new { o.OrderId, o.DishId });
+        }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Dish> Dishes { get; set; }
@@ -20,5 +25,7 @@ namespace Cafe
         public CafeDbContext(DbContextOptions<CafeDbContext> options) : base(options)
         {
         }
+
+        public int MyProperty { get; set; }
     }
 }
