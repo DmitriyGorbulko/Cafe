@@ -8,13 +8,15 @@ namespace Cafe
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<OrderDish>()
-            .HasKey(o => new { o.OrderId, o.DishId });
+                .HasKey(o => new { o.OrderId, o.DishId });
+            builder.Entity<IngredientDish>()
+                .HasKey(i => new { i.DishId, i.IngredientId });
         }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
-        public DbSet<IngredientToDish> IngredientToDishes { get; set; }
+        public DbSet<IngredientDish> IngredientToDishes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CategoryDish> CategoryDishes { get; set; }

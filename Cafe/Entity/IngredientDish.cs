@@ -4,12 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Cafe.Entity
 {
     [Table("ingredient_to_dish")]
-    public class IngredientToDish
+    public class IngredientDish
     {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
-
         [ForeignKey(nameof(Ingredient))]
         [Column("ingredient_id")]
         public int IngredientId { get; set; }

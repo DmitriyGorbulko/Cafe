@@ -17,6 +17,9 @@ namespace Cafe.Entity
         [Column("description")]
         public string Description { get; set; }
 
+        [Column("recipe")]
+        public string Recipe { get; set; }
+
         [ForeignKey(nameof(CategoryDish))]
         [Column("category_dish_id")]
         public int CategoryDishId { get; set; }
