@@ -12,7 +12,13 @@ namespace Cafe
         {
             return services
                 .AddScoped<ITypeTableRepository, TypeTableRepository>()
-                .AddScoped<ICategoryIngredientRepository, CategoryIngredientRepository>();
+                .AddScoped<ICategoryIngredientRepository, CategoryIngredientRepository>()
+                .AddScoped<ICategoryDishRepository, CategoryDishRepository>()
+                .AddScoped<IDeliveryRepository, DeliveryRepository>()
+                .AddScoped<IDishRepository, DishRepository>()
+                .AddScoped<IIngredientRepository, IngredientRepository>()
+                .AddScoped<IOrderRepository, OrderRepository>()
+                .AddScoped<ITableRepository, TableRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)

@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cafe.Repositories.Interfaces
 {
-    public interface ITypeTableRepository
+    public interface ITypeTableRepository : IRepositoryBase<TypeTable>
     {
-        Task<TypeTable> Get(int id);
-        Task<IEnumerable<TypeTable>> GetAll();
-        Task<TypeTable> Create(TypeTable typeTable);
-        Task<TypeTable> Update(TypeTable typeTable);
-        Task Delete(int id);
     }
 }
