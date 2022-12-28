@@ -9,7 +9,7 @@ namespace Cafe.Services.Interfaces
         Task<CategoryIngredient> Create(CategoryIngredient categoryIngredient);
 
         Task<CategoryIngredient> Get(int id);
-
+        
         Task<IEnumerable<CategoryIngredient>> GetAll();
 
         Task<CategoryIngredient> Update(CategoryIngredient categoryIngredient);
