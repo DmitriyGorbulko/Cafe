@@ -40,6 +40,13 @@ namespace Cafe.Controllers
             return Ok(await _dishService.GetAll());
         }
 
+        [HttpGet]
+        [Route("/get_dish_by_category_id")]
+        public async Task<ActionResult<IEnumerable<Dish>>> GetDishByCategoryId(int id)
+        {
+            return Ok(await _dishService.GetDishByCategoryId(id));
+        }
+
         [HttpPut]
         [Route("/update_dish")]
         public async Task<ActionResult<CategoryIngredient>> Update(Dish dish)

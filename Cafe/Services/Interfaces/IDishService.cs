@@ -15,5 +15,7 @@ namespace Cafe.Services.Interfaces
         Task<Dish> Update(Dish dish);
 
         Task Delete(int id);
+
+        Task<IEnumerable<Dish>> GetDishByCategoryId(int id);
     }
 }

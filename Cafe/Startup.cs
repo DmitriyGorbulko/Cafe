@@ -47,6 +47,7 @@ namespace Cafe
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cafe v1"));
             }
+            app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 

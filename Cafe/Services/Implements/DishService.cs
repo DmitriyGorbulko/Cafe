@@ -35,6 +35,11 @@ namespace Cafe.Services.Implements
             return await _dishRepository.GetAll();
         }
 
+        public async Task<IEnumerable<Dish>> GetDishByCategoryId(int id)
+        {
+            return await _dishRepository.GetDishByCategoryId(id);
+        }
+
         public async Task<Dish> Update(Dish dish)
         {
             return await _dishRepository.Update(dish);
