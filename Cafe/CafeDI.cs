@@ -27,7 +27,8 @@ namespace Cafe
                 .AddScoped<ITypeTableService, TypeTableService>()
                 .AddScoped<ICategoryIngredientService, CategoryIngredientService>()
                 .AddScoped<IDishService, DishService>()
-                .AddScoped<ICategoryDishService, CategoryDishService>();
+                .AddScoped<ICategoryDishService, CategoryDishService>()
+                .AddScoped<IOrderService, OrderService>();
         }
     }
 }

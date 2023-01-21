@@ -1,6 +1,4 @@
-﻿
-
-using Cafe.Entity;
+﻿using Cafe.Entity;
 using Cafe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

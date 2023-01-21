@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cafe.Entity
 {
     [Table("order_dish")]
     public class OrderDish
     {
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+
         [ForeignKey(nameof(Order))]
         [Column("order_id")]
         public int OrderId { get; set; }
