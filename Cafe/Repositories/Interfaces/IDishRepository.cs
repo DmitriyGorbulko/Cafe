@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cafe.Repositories.Interfaces
 {
-    public interface IDishRepository
+    public interface IDishRepository : IRepositoryBase<Dish>
     {
-        Task< Dish> Get(int id);
-        Task<IEnumerable<Dish>> GetAll();
-        Task<Dish> Create(Dish dish);
-        Task<Dish> Update(Dish dish);
-        Task Delete(int id);
         Task<IEnumerable<Dish>> GetDishByCategoryId (int id);
     }
 }

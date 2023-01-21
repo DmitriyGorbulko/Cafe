@@ -14,17 +14,17 @@ namespace Cafe.Entity
         public int TableId { get; set; }
         public virtual Table? Table { get; set; }
 
-        [ForeignKey(nameof(Dish))]
+        /*[ForeignKey(nameof(Dish))]
         [Column("dish_id")]
         public int DishId { get; set; }
-        public virtual Dish? Dish { get; set; }
+        public virtual Dish? Dish { get; set; }*/
 
         [Column("count_person")]
         public int CountPerson { get; set; }
 
         [ForeignKey(nameof(Person))]
         [Column("person_id")]
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         public virtual Person? Person { get; set; }
     }
 }
