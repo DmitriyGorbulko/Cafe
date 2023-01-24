@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cafe.Core.Infrastructure;
 
 namespace Cafe
 {
@@ -29,6 +30,7 @@ namespace Cafe
         {
             services.AddDbContext<CafeDbContext>((options) =>
                 options.UseNpgsql(Configuration.GetConnectionString("CafeDb")));
+           
             services.AddControllers();
             services.AddRepositories();
             services.AddServices();
@@ -41,6 +43,7 @@ namespace Cafe
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.InitializeDatabaseAsync().Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,8 +55,12 @@ namespace Cafe
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
