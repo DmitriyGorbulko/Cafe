@@ -1,4 +1,5 @@
-﻿using Cafe.Repositories.Implements;
+﻿using Cafe.Core.Infrastructure.Services;
+using Cafe.Repositories.Implements;
 using Cafe.Repositories.Interfaces;
 using Cafe.Services.Implements;
 using Cafe.Services.Interfaces;
@@ -28,6 +29,7 @@ namespace Cafe
                 .AddScoped<ICategoryIngredientService, CategoryIngredientService>()
                 .AddScoped<IDishService, DishService>()
                 .AddScoped<ICategoryDishService, CategoryDishService>()
+                .AddTransient<IDbInitializerService, DbInitializerService>()
                 .AddScoped<IOrderService, OrderService>();
         }
     }
