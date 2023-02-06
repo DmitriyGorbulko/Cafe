@@ -34,6 +34,7 @@ namespace Cafe
             services.AddControllers();
             services.AddRepositories();
             services.AddServices();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cafe", Version = "v1" });

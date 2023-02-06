@@ -1,4 +1,5 @@
-﻿using Cafe.Entity;
+﻿using Cafe.DTO;
+using Cafe.Entity;
 using Cafe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,14 +20,14 @@ namespace Cafe.Controllers
 
         [HttpPost]
         [Route("/create_dish")]
-        public async Task<ActionResult<Dish>> Create(Dish dish)
+        public async Task<ActionResult<Dish>> Create(DishAddDTO dish)
         {
             return Ok(await _dishService.Create(dish));
         }
 
         [HttpGet]
         [Route("/get_dish")]
-        public async Task<ActionResult<Dish>> Get(int id)
+        public async Task<ActionResult<DishGetDTO>> Get(int id)
         {
             return Ok(await _dishService.Get(id));
         }
@@ -38,16 +39,15 @@ namespace Cafe.Controllers
             return Ok(await _dishService.GetAll());
         }
 
-        [HttpGet]
-        [Route("/get_dish_by_category_id")]
-        public async Task<ActionResult<IEnumerable<Dish>>> GetDishByCategoryId(int id)
+        [HttpGet("get_dish_by_category_id/{id}")]
+        public async Task<ActionResult<IEnumerable<DishGetDTO>>> GetDishByCategoryId(int id)
         {
             return Ok(await _dishService.GetDishByCategoryId(id));
         }
 
         [HttpPut]
         [Route("/update_dish")]
-        public async Task<ActionResult<CategoryIngredient>> Update(Dish dish)
+        public async Task<ActionResult<Dish>> Update(DishUpdateDTO dish)
         {
             return Ok(await _dishService.Update(dish));
         }
