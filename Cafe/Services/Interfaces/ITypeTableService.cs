@@ -1,4 +1,5 @@
-﻿using Cafe.Entity;
+﻿using Cafe.DTO;
+using Cafe.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ namespace Cafe.Services.Interfaces
 {
     public interface ITypeTableService
     {
-        Task<TypeTable> Get(int id);
+        Task<TypeTableGetDTO> Get(int id);
         Task<IEnumerable<TypeTable>> GetAll();
-        Task<TypeTable> Create(TypeTable typeTable);
-        Task<TypeTable> Update(TypeTable typeTable);
+        Task<TypeTable> Create(TypeTableAddDTO typeTableAddDTO);
+        Task<TypeTable> Update(TypeTableUpdateDTO typeTableUpdateDTO);
         Task Delete(int id);
     }
 }

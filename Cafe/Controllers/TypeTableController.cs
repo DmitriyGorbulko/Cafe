@@ -1,4 +1,5 @@
-﻿using Cafe.Entity;
+﻿using Cafe.DTO;
+using Cafe.Entity;
 using Cafe.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
@@ -20,30 +21,30 @@ namespace Cafe.Controllers
         
         [HttpPost]
         [Route("/create_type_table")]
-        public async Task<ActionResult<TypeTable>> Create(TypeTable typeTable)
+        public async Task<ActionResult<TypeTable>> Create(TypeTableAddDTO typeTableAddDTO)
         {
-            return Ok(await _typeTableService.Create(typeTable));
+            return Ok(await _typeTableService.Create(typeTableAddDTO));
         }
 
         [HttpGet]
         [Route("/get_type_table")]
-        public async Task<ActionResult<TypeTable>> Get(int id)
+        public async Task<ActionResult<TypeTableGetDTO>> Get(int id)
         {
             return Ok(await _typeTableService.Get(id));
         }
 
         [HttpGet]
         [Route("/get_all_types_table")]
-        public async Task<ActionResult<IEnumerable<TypeTable>>> GetAll()
+        public async Task<ActionResult<IEnumerable<TypeTableGetDTO>>> GetAll()
         {
             return Ok(await _typeTableService.GetAll());
         }
 
         [HttpPut]
         [Route("/update_type_table")]
-        public async Task<ActionResult<TypeTable>> Update(TypeTable typeTable)
+        public async Task<ActionResult<TypeTable>> Update(TypeTableUpdateDTO typeTableUpateDTO)
         {
-            return Ok(await _typeTableService.Update(typeTable));
+            return Ok(await _typeTableService.Update(typeTableUpateDTO));
         }
 
         [HttpDelete]

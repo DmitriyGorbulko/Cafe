@@ -11,7 +11,7 @@ namespace Cafe.Entity
         public int Id { get; set; }
 
         [Column("title")]
-        public string Title { get; set; }
+        public string Title { get; set; } 
 
         [Column("count_person")]
         public int CountPerson{ get; set; }

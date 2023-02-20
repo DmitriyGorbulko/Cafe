@@ -2,6 +2,7 @@
 {
     public class DishUpdateDTO
     {
+        public int id { get; set; }
 
         public string Description { get; set; }
 
