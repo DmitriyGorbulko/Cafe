@@ -13,8 +13,7 @@ namespace Cafe.Mappers
             CreateMap<TypeTableUpdateDTO, TypeTable>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(y => y.id))
                 .ForMember(x => x.CountPerson, opt => opt.MapFrom(y => y.CountPerson))
-                .ForAllMembers(x => x.Ignore());/*
-            CreateMap<TypeTable, TypeTableUpdateDTO>();*/
+                .ForAllMembers(x => x.Ignore());
         }
     }
 }
