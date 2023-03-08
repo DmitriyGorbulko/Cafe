@@ -1,12 +1,15 @@
 ﻿using Cafe.Entity;
 using Cafe.Services.Implements;
 using Cafe.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cafe.Controllers
 {
+    [Route("api/category_dish")]
+    [ApiController]
     public class CategoryDishController : ControllerBase
     {
         private readonly ICategoryDishService _categoryDishService;
@@ -17,7 +20,7 @@ namespace Cafe.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("/create_category_dish")]
         public async Task<ActionResult<CategoryDish>> Create(CategoryDish categoryDish)
         {

@@ -13,6 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cafe.Core.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cafe
 {
@@ -30,7 +34,25 @@ namespace Cafe
         {
             services.AddDbContext<CafeDbContext>((options) =>
                 options.UseNpgsql(Configuration.GetConnectionString("CafeDb")));
-           
+            
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ClockSkew = TimeSpan.Zero,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "apiWithAuthBackend",
+                        ValidAudience = "apiWithAuthBackend",
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes("!SomethingSecret!")
+                        ),
+                    };
+                });
             services.AddControllers();
             services.AddRepositories();
             services.AddServices();
@@ -55,7 +77,10 @@ namespace Cafe
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+            
             app.UseRouting();
+            app.UseAuthorization();
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
