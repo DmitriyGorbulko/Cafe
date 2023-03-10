@@ -20,10 +20,23 @@ namespace Cafe.Controllers
 
         [HttpPost]
         [Route("/register")]
-        public async Task<IActionResult> Register(PersonAuthDTO request) 
+        public async Task<IActionResult> Register(PersonAuthDTO request)
         {
             var response = await _authRepository.Register(
                     new Person { Email = request.Email }, request.Password);
+            if (!response)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("/login")]
+        public async Task<IActionResult> Login(PersonAuthDTO request)
+        {
+            var response = await _authRepository.Login(
+                request.Email, request.Password);
             if (!response)
             {
                 return BadRequest(response);
