@@ -37,7 +37,7 @@ namespace Cafe.Controllers
         {
             var response = await _authRepository.Login(
                 request.Email, request.Password);
-            if (!response)
+            if (response == "false")
             {
                 return BadRequest(response);
             }

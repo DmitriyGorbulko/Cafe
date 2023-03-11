@@ -20,7 +20,7 @@ namespace Cafe.Controllers
         }
 
 
-        [HttpPost, Authorize]
+        [HttpPost]
         [Route("/create_category_dish")]
         public async Task<ActionResult<CategoryDish>> Create(CategoryDish categoryDish)
         {
@@ -34,7 +34,7 @@ namespace Cafe.Controllers
             return Ok(await _categoryDishService.Get(id));
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "admin")]
         [Route("/get_all_category_dishes")]
         public async Task<ActionResult<IEnumerable<CategoryDish>>> GetAll()
         {

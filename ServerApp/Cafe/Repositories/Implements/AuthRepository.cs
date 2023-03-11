@@ -1,8 +1,15 @@
 ﻿using Cafe.Entity;
 using Cafe.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using System.Collections.Generic;
 
 namespace Cafe.Repositories.Implements
 {
@@ -60,20 +67,41 @@ namespace Cafe.Repositories.Implements
             }
         }
 
-        public async Task<bool> Login(string email, string password)
+        public async Task<string> Login(string email, string password)
         {
-            var response = true;
+            var response = "false";
             var person = await _context.Persons.FirstOrDefaultAsync(x => x.Email.ToLower().Equals(email.ToLower()));
             if (person == null)
             {
-                response = false;
+                return response;
             }
             else if (!VerifyPasswordHash(password, person.PasswordHash, person.PasswordSalt))
             {
-                response = false;
+                return response;
             }
 
+            response = CreateToken(await _context.Persons.FirstOrDefaultAsync(x => x.Email == email));
             return response;
+        }
+
+        private string CreateToken(Person person)
+        {
+            const int ExpirationMinutes = 30;
+
+            /*var role = await _context.Roles.FindAsync(person.RoleId);*/
+            var claims = new List<Claim> {
+                new Claim(ClaimTypes.Email, person.Email),
+                new Claim(ClaimTypes.Role, "admin")
+            };
+            var jwt = new JwtSecurityToken(
+                    issuer: AuthOptions.ISSUER,
+                    audience: AuthOptions.AUDIENCE,
+                    claims: claims,
+                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(ExpirationMinutes)), // время действия 30 минуты
+                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+
+            return new JwtSecurityTokenHandler().WriteToken(jwt);
+
         }
 
     }
