@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using Cafe.Middleware;
 
 namespace Cafe
 {
@@ -32,13 +33,21 @@ namespace Cafe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            const string JwtSchemaName = "CafeSchema";
             services.AddDbContext<CafeDbContext>((options) =>
                 options.UseNpgsql(Configuration.GetConnectionString("CafeDb")));
             
             services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddAuthentication()
                 .AddJwtBearer(options =>
                 {
+                    
+                });
+            services.AddAuthentication(JwtSchemaName)
+                .AddScheme<JwtBearerOptions, CafeAuthenticationHandler>(JwtSchemaName, options =>
+                {
+                    string keyParameterName = ConfigurationPath.Combine("JwtOptions", "Key");
+
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ClockSkew = TimeSpan.Zero,
@@ -49,7 +58,7 @@ namespace Cafe
                         ValidIssuer = "Cafe",
                         ValidAudience = "Cafe",
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes("!SomethingSecret!")
+                            Encoding.UTF8.GetBytes(keyParameterName)
                         ),
                     };
                 });
@@ -100,9 +109,8 @@ namespace Cafe
 
             app.UseHttpsRedirection();
 
-            app.UseAuthentication();
-            
             app.UseRouting();
+            
             app.UseAuthorization();
             app.UseCors(x => x
                 .AllowAnyMethod()
