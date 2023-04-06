@@ -36,13 +36,6 @@ namespace Cafe
             const string JwtSchemaName = "CafeSchema";
             services.AddDbContext<CafeDbContext>((options) =>
                 options.UseNpgsql(Configuration.GetConnectionString("CafeDb")));
-            
-            services
-                .AddAuthentication()
-                .AddJwtBearer(options =>
-                {
-                    
-                });
             services.AddAuthentication(JwtSchemaName)
                 .AddScheme<JwtBearerOptions, CafeAuthenticationHandler>(JwtSchemaName, options =>
                 {
@@ -105,19 +98,17 @@ namespace Cafe
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cafe v1"));
             }
+            
             app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
             
+            app.UseAuthentication();
+            
             app.UseAuthorization();
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()); // allow credentials
-
+            
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

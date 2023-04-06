@@ -97,7 +97,7 @@ namespace Cafe.Repositories.Implements
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
                     claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(ExpirationMinutes)), // время действия 30 минуты
+                    expires: DateTime.UtcNow.AddMinutes(ExpirationMinutes), // время действия 30 минуты
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
 
             return new JwtSecurityTokenHandler().WriteToken(jwt);

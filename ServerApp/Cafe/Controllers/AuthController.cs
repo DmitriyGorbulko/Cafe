@@ -20,7 +20,7 @@ namespace Cafe.Controllers
 
         [HttpPost]
         [Route("/register")]
-        public async Task<IActionResult> Register(PersonAuthDTO request)
+        public async Task<IActionResult> Register([FromBody]PersonAuthDTO request)
         {
             var response = await _authRepository.Register(
                     new Person { Email = request.Email }, request.Password);
@@ -33,7 +33,7 @@ namespace Cafe.Controllers
 
         [HttpPost]
         [Route("/login")]
-        public async Task<IActionResult> Login(PersonAuthDTO request)
+        public async Task<IActionResult> Login([FromBody] PersonAuthDTO request)
         {
             var response = await _authRepository.Login(
                 request.Email, request.Password);
