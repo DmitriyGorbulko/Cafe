@@ -35,7 +35,7 @@ namespace Cafe.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [Route("/get_all_category_dishes")]
         public async Task<ActionResult<IEnumerable<CategoryDish>>> GetAll()
         {
