@@ -19,6 +19,7 @@ import { Switch } from '@mui/material';
 import CategoryDish from './components/CategoryDish/CategoryDish';
 import CategoryDishPage from './components/CategoryDishPage/CategoryDishPage';
 import DishPage from './components/DishPage/DishPage';
+import Basket from './components/Basket/Basket';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path='/editDish/create' element = {<CreateDish/>}></Route>
           <Route path='/categoryDish' element = {<CategoryDishPage/>}></Route>
           <Route path='/dishPage' element = {<DishPage/>}></Route>
+          <Route path='/basket' element = {<Basket/>}></Route>
 
         </Routes>
     </Router> 
