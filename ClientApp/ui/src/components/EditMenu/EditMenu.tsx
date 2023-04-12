@@ -1,0 +1,18 @@
+import { Link } from 'react-router-dom';
+import React from 'react'
+import { Button } from '@mui/material';
+import Header from '../Header/Header';
+
+function EditMenu() {
+  return (
+    <div className='divEditForm'>
+        <Button variant='contained' href='/editCategoryIngredient'>Категория ингредиентов</Button>
+        <Button variant='contained' href='/editCategoryDish'>Категория блюд</Button>
+        <Button variant='contained' href='/editIngredient'>Ингредиенты</Button>
+        <Button variant='contained' href='/editDish'>Блюд</Button>
+        <Button variant='contained' href='/editTable'>Столов</Button>      
+    </div>
+  )
+}
+
+export default EditMenu
