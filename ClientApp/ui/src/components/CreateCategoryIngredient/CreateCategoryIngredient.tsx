@@ -1,7 +1,7 @@
 import React from 'react'
-import Input from '../Input/Input'
+import {Input} from '../Input/Input'
 
-function CreateCategoryIngredient() {
+export const CreateCategoryIngredient = () => {
   return (
     <div>
       <Input/>
@@ -9,5 +9,3 @@ function CreateCategoryIngredient() {
     </div>
   )
 }
-
-export default CreateCategoryIngredient

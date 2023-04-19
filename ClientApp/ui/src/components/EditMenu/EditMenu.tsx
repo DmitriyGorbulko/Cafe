@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import React from 'react'
 import { Button } from '@mui/material';
-import Header from '../Header/Header';
 
-function EditMenu() {
+export const EditMenu = () => {
   return (
     <div className='divEditForm'>
         <Button variant='contained' href='/editCategoryIngredient'>Категория ингредиентов</Button>
@@ -14,5 +13,3 @@ function EditMenu() {
     </div>
   )
 }
-
-export default EditMenu

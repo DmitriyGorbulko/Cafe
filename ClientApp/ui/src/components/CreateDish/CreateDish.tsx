@@ -1,7 +1,7 @@
 import React from 'react'
-import Input from '../Input/Input'
+import {Input} from '../Input/Input'
 
-function CreateDish() {
+export const CreateDish = () => {
   return (
     <div>
       <Input/>
@@ -12,5 +12,3 @@ function CreateDish() {
     </div>
   )
 }
-
-export default CreateDish

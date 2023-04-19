@@ -1,12 +1,10 @@
 import React from 'react'
-import Ingredient from '../Ingredient/Ingredient'
+import {Ingredient} from '../Ingredient/Ingredient'
 import { Button } from '@mui/material'
-import Dish from '../Dish/Dish'
+import {Dish} from '../Dish/Dish'
 
-function DishPage() {
+export const DishPage = () => {
   return (
     <Dish/>
   )
 }
-
-export default DishPage

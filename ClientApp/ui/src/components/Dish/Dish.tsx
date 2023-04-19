@@ -1,8 +1,8 @@
 import React from 'react'
-import Ingredient from '../Ingredient/Ingredient'
+import {Ingredient} from '../Ingredient/Ingredient'
 import { Button } from '@mui/material'
 
-function Dish() {
+export const Dish = () => {
   return (
     <div>
         <h1>Название</h1>
@@ -12,5 +12,3 @@ function Dish() {
     </div>
   )
 }
-
-export default Dish

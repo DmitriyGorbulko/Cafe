@@ -1,10 +1,8 @@
 import React from 'react'
-import EditForm from '../EditForm/EditForm'
+import {EditForm} from '../EditForm/EditForm'
 
-function EditIngredient() {
+export const EditIngredient = () => {
   return (
     <EditForm/>
   )
 }
-
-export default EditIngredient

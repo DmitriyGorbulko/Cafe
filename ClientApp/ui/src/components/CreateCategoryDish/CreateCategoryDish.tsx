@@ -1,9 +1,7 @@
 import React from 'react'
 
-function CreateCategoryDish() {
+export const CreateCategoryDish = () => {
   return (
     <div>CreateCategoryDish</div>
   )
 }
-
-export default CreateCategoryDish

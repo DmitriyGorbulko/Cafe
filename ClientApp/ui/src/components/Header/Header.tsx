@@ -1,8 +1,9 @@
 import { Button } from '@mui/material'
+import exp from 'constants'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+export const Header = () => {
   return (
     <div>
         <header className='headerCafe'>
@@ -17,5 +18,3 @@ const Header = () => {
     </div>
   )
 }
-
-export default Header

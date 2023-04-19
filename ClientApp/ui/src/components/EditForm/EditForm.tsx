@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import React from 'react'
 import { Box, Button } from '@mui/material';
-import Header from '../Header/Header';
+import {Header} from '../Header/Header';
 
-function EditForm() {
+export const EditForm = () => {
     const pathCreate = window.location.pathname + '/create';  
     const pathUpdate = window.location.pathname + '/update';  
     return (
@@ -13,5 +13,3 @@ function EditForm() {
         </div>
     )
 }
-
-export default EditForm

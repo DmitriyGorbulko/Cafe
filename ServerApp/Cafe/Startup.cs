@@ -19,6 +19,8 @@ namespace Cafe
         {
             Configuration = configuration;
         }
+        
+        readonly string Cafespecific = "_cafe";
 
         public IConfiguration Configuration { get; }
 
@@ -29,6 +31,19 @@ namespace Cafe
             services.AddDbContext<CafeDbContext>((options) =>
                 options.UseNpgsql(Configuration.GetConnectionString("CafeDb")));
 
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: Cafespecific,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost",
+                "http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowedToAllowWildcardSubdomains();
+                    });
+            });
             services.AddControllers();
             services.AddRepositories();
             services.AddServices();
@@ -78,7 +93,10 @@ namespace Cafe
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cafe v1"));
             }
 
+
             app.UseRouting();
+
+            app.UseCors(Cafespecific);
 
             app.UseAuthentication();
             app.UseAuthorization();

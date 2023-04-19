@@ -1,9 +1,7 @@
 import React from 'react'
 
-function CreateIngredient() {
+export const CreateIngredient = () => {
   return (
     <div>CreateIngredient</div>
   )
 }
-
-export default CreateIngredient

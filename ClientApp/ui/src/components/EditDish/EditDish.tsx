@@ -1,10 +1,8 @@
 import React from 'react'
-import EditForm from '../EditForm/EditForm'
+import {EditForm} from '../EditForm/EditForm'
 
-function EditDish() {
+export const EditDish = () => {
   return (
     <EditForm/>
   )
 }
-
-export default EditDish

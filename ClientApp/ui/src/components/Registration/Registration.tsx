@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, TextField } from '@mui/material'
 import { Button } from '@mui/material';
 
-function Registration() {
+export const Registration = () => {
   return (
     <div className='login'>
         <TextField fullWidth label="Email" id="email" color='primary'/>
@@ -12,5 +12,3 @@ function Registration() {
     </div>
   )
 }
-
-export default Registration

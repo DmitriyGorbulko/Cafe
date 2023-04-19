@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
     
 // }
 
-const Login = () => {
+export const Login = () => {
   return (
     
     <div className='login'>
@@ -20,7 +20,3 @@ const Login = () => {
     </div>
   ) 
 }
-
-
-
-export default Login

@@ -1,10 +1,8 @@
 import React from 'react'
-import EditForm from '../EditForm/EditForm'
+import {EditForm} from '../EditForm/EditForm'
 
-function EditTable() {
+export const EditTable = () => {
   return (
     <EditForm/>
   )
 }
-
-export default EditTable

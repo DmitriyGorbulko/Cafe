@@ -1,8 +1,8 @@
 import React from 'react'
-import DishBuy from '../DishBuy/DishBuy'
+import {DishBuy} from '../DishBuy/DishBuy'
 import { Button } from '@mui/material'
 
-function Basket() {
+export const Basket : React.FC = () => {
   return (
     <div>
         <DishBuy/>
@@ -10,5 +10,3 @@ function Basket() {
     </div>
   )
 }
-
-export default Basket
