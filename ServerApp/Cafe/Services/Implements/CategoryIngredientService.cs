@@ -1,4 +1,6 @@
-﻿using Cafe.Entity;
+﻿using AutoMapper;
+using Cafe.DTO;
+using Cafe.Entity;
 using Cafe.Repositories.Interfaces;
 using Cafe.Services.Interfaces;
 using System.Collections.Generic;
@@ -10,13 +12,14 @@ namespace Cafe.Services.Implements
     {
         private readonly ICategoryIngredientRepository _categoryIngredientRepository;
         
-        public CategoryIngredientService(ICategoryIngredientRepository categoryIngredientRepository)
+        public CategoryIngredientService(ICategoryIngredientRepository categoryIngredientRepository, IMapper mapper)
         {
             _categoryIngredientRepository = categoryIngredientRepository;
         }
 
         public async Task<CategoryIngredient> Create(CategoryIngredient categoryIngredient)
         {
+            
             return await _categoryIngredientRepository.Create(categoryIngredient);
         }
 

@@ -1,4 +1,5 @@
-﻿using Cafe.Entity;
+﻿using Cafe.DTO;
+using Cafe.Entity;
 using Cafe.Services.Implements;
 using Cafe.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -22,14 +23,14 @@ namespace Cafe.Controllers
 
         [HttpPost]
         [Route("/create_category_dish")]
-        public async Task<ActionResult<CategoryDish>> Create(CategoryDish categoryDish)
+        public async Task<ActionResult<CategoryDish>> Create(CategoryDishAddDTO categoryDish)
         {
             return Ok(await _categoryDishService.Create(categoryDish));
         }
 
         [HttpGet]
         [Route("/get_category_dish")]
-        public async Task<ActionResult<CategoryDish>> Get(int id)
+        public async Task<ActionResult<CategoryDishGetDTO>> Get(int id)
         {
             return Ok(await _categoryDishService.Get(id));
         }
@@ -37,7 +38,7 @@ namespace Cafe.Controllers
         [HttpGet]
         /*[Authorize(Roles = "admin")]*/
         [Route("/get_all_category_dishes")]
-        public async Task<ActionResult<IEnumerable<CategoryDish>>> GetAll()
+        public async Task<ActionResult<IEnumerable<CategoryDishGetDTO>>> GetAll()
         {
             return Ok(await _categoryDishService.GetAll());
         }
