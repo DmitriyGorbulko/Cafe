@@ -12,5 +12,6 @@ namespace Cafe.Services.Interfaces
         Task<IEnumerable<IngredientGetDTO>> GetAll();
         Task<Ingredient> Update(IngredientUpdateDTO ingredientUpdateDTO);
         Task Delete(int id);
+        Task<IEnumerable<IngredientGetDTO>> GetIngredientsByCategoryIngredientId(int Id);
     }
 }

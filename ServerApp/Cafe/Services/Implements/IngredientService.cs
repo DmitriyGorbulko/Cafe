@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cafe.DTO;
 using Cafe.Entity;
+using Cafe.Repositories.Implements;
 using Cafe.Repositories.Interfaces;
 using Cafe.Services.Interfaces;
 using System.Collections.Generic;
@@ -39,6 +40,12 @@ namespace Cafe.Services.Implements
         public async Task<IEnumerable<IngredientGetDTO>> GetAll()
         {
             var ingredientList = await _ingredientRepository.GetAll();
+            return _mapper.Map<IEnumerable<IngredientGetDTO>>(ingredientList);
+        }
+
+        public async Task<IEnumerable<IngredientGetDTO>> GetIngredientsByCategoryIngredientId(int id)
+        {
+            var ingredientList = await _ingredientRepository.GetIngridientsByCategoryIngredient(id);
             return _mapper.Map<IEnumerable<IngredientGetDTO>>(ingredientList);
         }
 

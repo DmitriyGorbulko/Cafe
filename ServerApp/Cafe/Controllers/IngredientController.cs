@@ -41,6 +41,13 @@ namespace Cafe.Controllers
             return Ok(await _ingredientService.GetAll());
         }
 
+        [HttpGet]
+        [Route("/get_ingredients_by_category_ingredient_id")]
+        public async Task<ActionResult<IngredientGetDTO>> GetIngredientsByCategoryIngredientId(int id)
+        {
+            return Ok(await _ingredientService.GetIngredientsByCategoryIngredientId(id));
+        }
+
         [HttpPut]
         [Route("/update_ingredient")]
         public async Task<ActionResult<Ingredient>> Update(IngredientUpdateDTO ingredientUpdateDTO)

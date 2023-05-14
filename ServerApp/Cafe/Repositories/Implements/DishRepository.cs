@@ -20,5 +20,5 @@ namespace Cafe.Repositories.Implements
         {
             return await _context.Dishes.Where(d => d.CategoryDishId == id).ToListAsync();
         }
-    }
+    }   
 }
