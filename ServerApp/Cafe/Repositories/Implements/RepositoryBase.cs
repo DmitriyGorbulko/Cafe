@@ -40,6 +40,7 @@ namespace Cafe.Repositories.Implements
 
         public virtual async Task<TEntity> Update(TEntity entity)
         {
+
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;

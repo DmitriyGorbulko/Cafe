@@ -19,7 +19,8 @@ namespace Cafe
                 .AddScoped<IDishRepository, DishRepository>()
                 .AddScoped<IIngredientRepository, IngredientRepository>()
                 .AddScoped<IOrderRepository, OrderRepository>()
-                .AddScoped<ITableRepository, TableRepository>();
+                .AddScoped<ITableRepository, TableRepository>()
+                .AddScoped<IIngredientService, IngredientService>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
