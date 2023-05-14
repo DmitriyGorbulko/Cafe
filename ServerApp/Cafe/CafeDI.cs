@@ -31,7 +31,8 @@ namespace Cafe
                 .AddScoped<ICategoryDishService, CategoryDishService>()
                 .AddTransient<IDbInitializerService, DbInitializerService>()
                 .AddScoped<IOrderService, OrderService>()
-                .AddScoped<IAuthRepository, AuthRepository>();
+                .AddScoped<IAuthRepository, AuthRepository>()
+                .AddScoped<ITableService, TableService>();
         }
     }
 }

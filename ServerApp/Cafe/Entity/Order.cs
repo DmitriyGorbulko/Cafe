@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cafe.Entity
@@ -14,10 +15,6 @@ namespace Cafe.Entity
         public int TableId { get; set; }
         public virtual Table? Table { get; set; }
 
-        /*[ForeignKey(nameof(Dish))]
-        [Column("dish_id")]
-        public int DishId { get; set; }
-        public virtual Dish? Dish { get; set; }*/
 
         [Column("count_person")]
         public int CountPerson { get; set; }
