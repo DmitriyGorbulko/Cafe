@@ -8,7 +8,7 @@ export const Registration = () => {
         <TextField fullWidth label="Email" id="email" color='primary'/>
         <TextField fullWidth label="Password" id="Password" color='primary'/>
         <TextField fullWidth label="Repeat password" id="RepeatPassword" color='primary'/>
-        <Button href='/'>Registration</Button>
+        <Button color='success' href='/'>Registration</Button>
     </div>
   )
 }

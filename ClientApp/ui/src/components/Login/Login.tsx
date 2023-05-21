@@ -1,8 +1,7 @@
-
-import { Input } from '@mui/material'
 import React from 'react'
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Input } from '../Input/Input';
 
 // function ToHome() {
     
@@ -10,13 +9,11 @@ import { Link } from 'react-router-dom';
 
 export const Login = () => {
   return (
-    
     <div className='login'>
-      
-        <Input/>
-        <Input/>
-        <Link className='loginButton' to='/home' color='success'>login</Link>
-        <Link className='loginButton' to='/registration' color='success' >registration</Link>
+        <TextField fullWidth label="Email" id="email" color='primary'/>
+        <TextField fullWidth label="Password" id="Password" color='primary'/>
+        <Button variant="contained" color="success" href='/home'>Login</Button>
+        <Button variant="contained" color="success" href='/registration'>Registration</Button>
     </div>
   ) 
 }

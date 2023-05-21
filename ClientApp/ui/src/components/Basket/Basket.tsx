@@ -2,7 +2,7 @@ import React from 'react'
 import {DishBuy} from '../DishBuy/DishBuy'
 import { Button } from '@mui/material'
 
-export const Basket : React.FC = () => {
+export const Basket = () => {
   return (
     <div>
         <DishBuy/>

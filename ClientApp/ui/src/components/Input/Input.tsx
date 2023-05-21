@@ -1,10 +1,10 @@
+import { TextField } from '@mui/material'
 import React from 'react'
 
-export const Input = () => {
+export const Input = (props: string, identificator: string) => {
   return (
     <div>
-      <input type="text" />
-      dddddddddd
-      </div>
+      <TextField fullWidth label={props} id={identificator} color='primary'/>
+    </div>
   )
 }

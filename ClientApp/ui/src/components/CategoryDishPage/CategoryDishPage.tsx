@@ -42,6 +42,5 @@ export const CategoryDishPage = () => {
         ))}
       </ul>
     </div>
-    
   );
 }

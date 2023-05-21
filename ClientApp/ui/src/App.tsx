@@ -24,25 +24,24 @@ function App() {
   return (
     <Router>
       <Header/>
-        <Routes>
-          <Route path='/' Component = {Login}/>
-          <Route path='/registration' Component = {Registration}/>
-          <Route path='/create' Component = {EditMenu}></Route>
-          <Route path='/home' Component = {Home}/>
-          <Route path='*' Component = {ErrorPage}/>
-          <Route path='/editCategoryIngredient' Component = {EditCategoryIngredient}></Route>
-          <Route path='/editCategoryDish' Component = {EditCategoryDish}></Route>
-          <Route path='/editIngredient' Component = {EditIngredient}></Route>
-          <Route path='/editDish' Component = {EditDish}></Route>
-          <Route path='/editTable' Component = {EditTable}></Route>
-          <Route path='/editCategoryIngredient/create' Component = {CreateCategoryIngredient}></Route>
-          <Route path='/editCategoryDish/create' Component = {CreateCategoryDish}></Route>
-          <Route path='/editIngredient/create' Component = {CreateIngredient}></Route>
-          <Route path='/editDish/create' Component = {CreateDish}></Route>
-          <Route path='/categoryDish' Component = {CategoryDishPage}></Route>
-          <Route path='/dishPage' Component = {DishPage}></Route>
-          <Route path='/basket' Component = {Basket}></Route>
-
+          <Routes>
+            <Route path='/' Component = {Login}/>
+            <Route path='/registration' Component = {Registration}/>
+            <Route path='/create' Component = {EditMenu}></Route>
+            <Route path='/home' Component = {Home}/>
+            <Route path='*' Component = {ErrorPage}/>
+            <Route path='/editCategoryIngredient' Component = {EditCategoryIngredient}></Route>
+            <Route path='/editCategoryDish' Component = {EditCategoryDish}></Route>
+            <Route path='/editIngredient' Component = {EditIngredient}></Route>
+            <Route path='/editDish' Component = {EditDish}></Route>
+            <Route path='/editTable' Component = {EditTable}></Route>
+            <Route path='/editCategoryIngredient/create' Component = {CreateCategoryIngredient}></Route>
+            <Route path='/editCategoryDish/create' Component = {CreateCategoryDish}></Route>
+            <Route path='/editIngredient/create' Component = {CreateIngredient}></Route>
+            <Route path='/editDish/create' Component = {CreateDish}></Route>
+            <Route path='/categoryDish' Component = {CategoryDishPage}></Route>
+            <Route path='/dishPage' Component = {DishPage}></Route>
+            <Route path='/basket' Component = {Basket}></Route>
         </Routes>
     </Router> 
   );

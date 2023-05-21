@@ -4,8 +4,8 @@ import {Input} from '../Input/Input'
 export const CreateCategoryIngredient = () => {
   return (
     <div>
-      <Input/>
-      <Input/>
+      {/* <Input/>
+      <Input/> */}
     </div>
   )
 }

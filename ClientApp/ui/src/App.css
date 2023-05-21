@@ -37,3 +37,6 @@
   justify-content: center;
   margin: 0% 5% auto 5%;
 }
+#colorTextButtonNavigation{
+  color: "success";
+}
