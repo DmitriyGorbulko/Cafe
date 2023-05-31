@@ -1,23 +1,59 @@
-import { Box, Button, ButtonGroup } from '@mui/material'
-import exp from 'constants'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
+
+interface IMenuItem{
+  href: string;
+  title: string;
+}
 
 export const Header = () => {
+  const pages: IMenuItem[] = [ 
+    {href:'/home', title: 'Главная'},
+    {href: '/create', title: 'Редактировать'},
+    {href: '/categoryDish', title: 'Меню'},
+    {href: '/kkrkr', title: 'Акции'},
+    {href: '/basket', title: 'Корзина'},
+    {href: '/kkrkr', title: 'Доставка'},
+    {href: '/kkrkr', title: 'О нас'},
+];
+  const navigation = useNavigate();
+  
   return (
     <Box>
-        <header className='headerCafe'>
-          <ButtonGroup variant="text" aria-label="text button group">
-            <Button color= "success" href='/home'>Главная</Button>
-            <Button color= "success" href='/create'>Редактировать</Button>
-            <Button color= "success" href='/categoryDish'>Меню</Button>
-            <Button color= "success" href='/kkrkr'>Акции</Button>
-            <Button color= "success" href='/basket'>Корзина</Button>
-            <Button color= "success" href='/kkrkr'>Доставка</Button>
-            <Button color= "success">О нас</Button>
-          </ButtonGroup>
-          
-        </header>
+       <AppBar color='transparent' position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h4"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            MyCafe
+          </Typography>
+          <Box  sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page.title}
+                onClick={() => navigation(page.href)}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <span style={{color: 'black'}}>{page.title}</span>
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
     </Box>
   )
 }

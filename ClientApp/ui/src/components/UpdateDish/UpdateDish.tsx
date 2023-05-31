@@ -1,7 +1,5 @@
-import React, { FC, useEffect, useState} from 'react'
-import {Input} from '../Input/Input'
+import React, {  useEffect, useState} from 'react'
 import axios from 'axios'
-import { API_URL } from '../../API'
 import { IDish } from '../../models/DishModels'
 interface IUpdateDish {
     id: number,

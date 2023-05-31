@@ -49,8 +49,9 @@ namespace Cafe.Services.Implements
 
         public async Task<Dish> Update(DishUpdateDTO dishDTO)
         {
-            var dish = _mapper.Map<Dish>(dishDTO);
-            return await _dishRepository.Update(dish);
+            var entity = await _dishRepository.Get(dishDTO.id);
+            _mapper.Map(dishDTO, entity);
+            return await _dishRepository.Update(entity);
         }
     }
 }

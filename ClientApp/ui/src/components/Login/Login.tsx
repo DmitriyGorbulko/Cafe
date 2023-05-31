@@ -1,19 +1,37 @@
-import React from 'react'
-import { Button, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { Input } from '../Input/Input';
+import { Button, Stack, TextField } from "@mui/material";
 
 // function ToHome() {
-    
+
 // }
 
 export const Login = () => {
   return (
-    <div className='login'>
-        <TextField fullWidth label="Email" id="email" color='primary'/>
-        <TextField fullWidth label="Password" id="Password" color='primary'/>
-        <Button variant="contained" color="success" href='/home'>Login</Button>
-        <Button variant="contained" color="success" href='/registration'>Registration</Button>
-    </div>
-  ) 
-}
+    <Stack spacing={4} className="form_center">
+        <TextField
+          margin="normal"
+          variant="standard"
+          fullWidth
+          label="Email"
+          id="email"
+          color="primary"
+        />
+        <TextField
+          margin="normal"
+          variant="standard"
+          fullWidth
+          label="Password"
+          id="password"
+          color="primary"
+        />
+        <Button fullWidth  variant="contained" color="success" href="/home">
+          Войти
+        </Button>
+        <div>
+          <span>У вас нет аккаунта?</span>
+          <Button variant="text" color="primary" href="/registration">
+            Регистрация
+          </Button>
+        </div>
+    </Stack>
+  );
+};

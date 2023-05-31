@@ -1,9 +1,17 @@
-.login{
+.form_center{
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 20%;
-  margin: 20% auto;
+  margin: 15% auto 0 auto !important;
+}
+
+.large_form_center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  margin: 5% auto 0 auto !important;
 }
 
 .home{
