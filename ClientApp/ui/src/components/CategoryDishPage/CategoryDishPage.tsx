@@ -7,22 +7,6 @@ import { Button } from '@mui/material';
 
 const baseURL = "http://localhost:5000/";
 
-const test : ICategoryDish[] = [{
-  id: 1,
-  title: "dd",
-},
-{
-  id: 1,
-  title: "sss"
-}
-]
-
-// function onClickCategory(id: number){
-
-// }
-
-
-
 export const CategoryDishPage = () => {
 
   const [categoryDish, setCategoryDish] = useState<ICategoryDish[]>();
@@ -36,8 +20,8 @@ export const CategoryDishPage = () => {
   return (
     <div className='login'>
       <ul>
-        {categoryDish && categoryDish.map((test) => (
-          <CategoryDish key={test.id} title={test.title} />
+        {categoryDish && categoryDish.map((item) => (
+          <CategoryDish key={item.id} title={item.title} id={item.id} />
           // <Button variant='contained' href='/dishPage' key={test.id}>{test.title}</Button>
         ))}
       </ul>

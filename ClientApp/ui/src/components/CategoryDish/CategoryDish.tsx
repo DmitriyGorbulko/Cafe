@@ -1,22 +1,30 @@
-import React from 'react'
+import React, { FC } from 'react'
 import {Dish} from '../Dish/Dish'
-import { Button } from '@mui/material'
+import { Button, Card, CardActions } from '@mui/material'
 import { ICategoryDish } from '../../models/DishModels'
 import {useNavigate, generatePath} from 'react-router-dom';
+import img from '../../test/logo192.png';
 
 interface ICategoryDishProps{
+  id: number;
   title: string;
 }
 
-export const CategoryDish = (props: ICategoryDishProps) => {
+export const CategoryDish: FC<ICategoryDishProps> = ({ title, id }) => {
   
-  const history = useNavigate();
+  const navigation = useNavigate();
 
-  const goToDishPage = () =>{
-    history('/dishPage')
+  const goToDishPage = (id: number) =>{
+    navigation(`/dishPage/${id}`)
   }
 
   return (
-    <Button variant='contained' onClick = {goToDishPage}>{props.title}</Button>
+    <Card>
+      <CardActions>
+      <Button variant='contained' onClick = {() => navigation(`/dishPage/${id}`)}>{title}</Button>
+      </CardActions>
+      {/* <img src={img} /> */}
+      
+    </Card>
   )
 }

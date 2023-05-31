@@ -40,3 +40,10 @@
 #colorTextButtonNavigation{
   color: "success";
 }
+
+.dish-button {
+  cursor: pointer;
+}
+.dish-button:hover {
+  background-color: rgb(234, 234, 234);
+}

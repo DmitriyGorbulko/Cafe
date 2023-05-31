@@ -5,6 +5,6 @@ export interface ICategoryDish {
 
 export interface IDish{
     id : number;
-    name : string;
+    title : string;
     description : string;
 }
