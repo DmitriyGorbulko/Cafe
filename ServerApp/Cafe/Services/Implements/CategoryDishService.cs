@@ -4,6 +4,7 @@ using Cafe.Entity;
 using Cafe.Repositories.Interfaces;
 using Cafe.Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cafe.Services.Implements
@@ -39,7 +40,7 @@ namespace Cafe.Services.Implements
         public async Task<IEnumerable<CategoryDishGetDTO>> GetAll()
         {
             var categoryDishList = await _categoryDishRepository.GetAll();
-            return _mapper.Map<IEnumerable<CategoryDishGetDTO>>(categoryDishList);
+            return _mapper.Map<IEnumerable<CategoryDishGetDTO>>(categoryDishList.OrderBy(x => x.Id));
         }
 
         public async Task<CategoryDish> Update(CategoryDish categoryIngredient)

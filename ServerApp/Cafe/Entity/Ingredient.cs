@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cafe.Entity
@@ -20,5 +21,9 @@ namespace Cafe.Entity
         [Column("category_ingredient_id")]
         public int CategoryIngredientId { get; set; }
         public virtual CategoryIngredient? CategoryIngredient { get; set; }
+        
+        public virtual ICollection<Dish> Dishes { get; set; }
+        public virtual ICollection<IngredientDish> IngredientDishes { get; set; }
+
     }
 }

@@ -18,7 +18,11 @@ namespace Cafe.Repositories.Implements
 
         public async Task<IEnumerable<Dish>> GetDishByCategoryId(int id)
         {
-            return await _context.Dishes.Where(d => d.CategoryDishId == id).ToListAsync();
+            return await _context.Dishes
+                .Where(d => d.CategoryDishId == id)
+                .Include(x => x.CategoryDish)
+                .Include(x => x.Ingredients)
+                .ToListAsync();
         }
     }
 }

@@ -44,7 +44,9 @@ namespace Cafe.Services.Implements
         public async Task<IEnumerable<DishGetDTO>> GetDishByCategoryId(int id)
         {
             var dishList = await _dishRepository.GetDishByCategoryId(id);
-            return _mapper.Map<IEnumerable<DishGetDTO>>(dishList);
+            var dishModels = _mapper.Map<IEnumerable<DishGetDTO>>(dishList);
+            
+            return dishModels;
         }
 
         public async Task<Dish> Update(DishUpdateDTO dishDTO)

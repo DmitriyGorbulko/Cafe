@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_URL } from "../../API";
 import { ICategoryDish, IDish } from "../../models/DishModels";
 import {
+  Alert,
   Button,
   ButtonGroup,
   Container,
@@ -11,6 +12,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  Snackbar,
   Stack,
   TextField,
   Typography,
@@ -29,6 +31,7 @@ export const CreateDish = () => {
     recipe: "",
   });
   const [categoryDist, setCategoryDist] = useState<ICategoryDish[]>();
+  const [isOpen, setIsOpen] = useState<boolean>();
 
   const GetCategoryDish = () => {
     try {
@@ -54,6 +57,7 @@ export const CreateDish = () => {
         }
       );
       console.log(response.data);
+      setIsOpen(true)
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +78,12 @@ export const CreateDish = () => {
   };
 
   return (
-    <Stack minWidth={600} spacing={3} className="large_form_center">
+    <Stack minWidth={'50%'} spacing={3} className="large_form_center">
+      <Snackbar open={isOpen} autoHideDuration={6000} onClose={() => setIsOpen(false)}>
+        <Alert onClose={() => setIsOpen(false)} severity="success" sx={{ width: "100%" }}>
+          Блюдо {createDish?.title} добавлено
+        </Alert>
+      </Snackbar>
       <Typography align="center" maxWidth={600} variant="h3" component="h3">
         Добавить новое блюдо:
       </Typography>
@@ -135,17 +144,20 @@ export const CreateDish = () => {
           />
         </Stack>
       )}
-      <ButtonGroup variant="contained" aria-label="outlined primary button group">
-      <Button
-        fullWidth
-        variant="outlined"
-        onClick={() => console.log(createDish?.categoryDishId)}
+      <ButtonGroup
+        variant="contained"
+        aria-label="outlined primary button group"
       >
-        Вывести
-      </Button>
-      <Button fullWidth variant="outlined" onClick={() => CreateDish()}>
-        Отправить
-      </Button>
+        <Button
+          fullWidth
+          variant="outlined"
+          onClick={() => console.log(createDish?.categoryDishId)}
+        >
+          Вывести
+        </Button>
+        <Button fullWidth variant="outlined" onClick={() => CreateDish()}>
+          Отправить
+        </Button>
       </ButtonGroup>
     </Stack>
   );

@@ -1,41 +1,39 @@
-import { useParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
-import {Ingredient}
- from '../Ingredient/Ingredient'
-import { Button } from '@mui/material'
-import { IDish } from '../../models/DishModels'
-import axios from 'axios'
-import { API_URL } from '../../API'
+import React from "react";
+import {
+  Button,
+  IconButton,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
+import { IDish } from "../../models/DishModels";
+import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 
-export const Dish = () => {
-  const pageParams = useParams();
-  const [ dish, setDish] = useState<IDish[]>()
-
-  useEffect(() => {
-    axios.get(`${API_URL}/dish/get_dish_by_category_id/${pageParams.id}`).then((response) => {
-      setDish(response.data);
-      console.log(response.data);
-    });
-  }, []);
+export const Dish: React.FC<IDish> = (props) => {
   return (
-    <div>
-        <h1>Название</h1>
-        <Ingredient/>
-        <h1>{pageParams.id}</h1>
-        <p>Описание</p>
-        {dish && <div>
-          <div>{dish?.map((item: IDish) => (
-          <div style={{ marginTop: 10, display:"flex"}}>
-            <div>
-            <div>{item.title}
-            <div>{item.description}</div>
-            </div>
-            <Button variant='contained'>В корзину</Button>
-          </div>
-          </div> 
-        ))}</div>
-          </div>}
-        
-    </div>
-  )
-}
+    <ImageListItem key={props.id}>
+      <img
+        src={`${props.img}?w=500&fit=crop&auto=format`}
+        srcSet={`${props.img}?w=500&fit=crop&auto=format&dpr=1 1x`}
+        alt={props.title}
+        loading="lazy"
+      />
+      <ImageListItemBar
+        title={props.title}
+        subtitle={props.ingredients.map((x) => x.title).join(", ")}
+        style={{ paddingRight: "10%" }}
+        actionIcon={
+          <IconButton
+            sx={{
+              backgroundColor: "rgba(255, 255, 255, 0.6)",
+              color: "rgba(0, 0, 0, 0.54)",
+            }}
+            aria-label={`Добавить в заказ ${props.title}`}
+            onClick={() => console.log('добавлено')}
+          >
+            <AddShoppingCartRoundedIcon fontSize="large" />
+          </IconButton>
+        }
+      />
+    </ImageListItem>
+  );
+};

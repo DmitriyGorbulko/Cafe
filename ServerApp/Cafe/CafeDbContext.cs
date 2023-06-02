@@ -11,8 +11,15 @@ namespace Cafe
         {
             builder.Entity<OrderDish>()
                 .HasKey(o => new { o.OrderId, o.DishId });
-            builder.Entity<IngredientDish>()
-                .HasKey(i => new { i.DishId, i.IngredientId });
+
+            builder.Entity<Dish>()
+                .HasMany(t => t.Ingredients)
+                .WithMany(t => t.Dishes)
+                .UsingEntity<IngredientDish>(
+                    j => j.HasOne(x => x.Ingredient).WithMany(x => x.IngredientDishes).HasForeignKey(x => x.IngredientId),
+                    j => j.HasOne(x => x.Dish).WithMany(x => x.IngredientLinks).HasForeignKey(x => x.DishId),
+                    j => j.HasKey(x => new { x.DishId, x.IngredientId })
+                );
         }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }

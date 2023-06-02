@@ -24,5 +24,7 @@ namespace Cafe.Entity
         [Column("category_dish_id")]
         public int CategoryDishId { get; set; }
         public virtual CategoryDish? CategoryDish { get; set; }
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<IngredientDish> IngredientLinks { get; set; }
     }
 }
