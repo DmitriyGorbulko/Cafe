@@ -1,5 +1,6 @@
 import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from '../LogoutButton';
 
 interface IMenuItem{
   href: string;
@@ -50,6 +51,7 @@ export const Header = () => {
                 <span style={{color: 'black'}}>{page.title}</span>
               </Button>
             ))}
+            <LogoutButton/>
           </Box>
         </Toolbar>
       </Container>
