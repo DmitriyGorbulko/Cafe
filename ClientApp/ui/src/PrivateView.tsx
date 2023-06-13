@@ -10,7 +10,6 @@ import {CreateCategoryDish} from './components/CreateCategoryDish/CreateCategory
 import {CreateIngredient} from './components/CreateIngredient/CreateIngredient';
 import {CreateDish} from './components/CreateDish/CreateDish';
 import {Header} from './components/Header/Header';
-import { Switch } from '@mui/material';
 import {CategoryDishPage} from './components/CategoryDishPage/CategoryDishPage';
 import {DishPage} from './components/DishPage/DishPage';
 import {Basket} from './components/Basket/Basket';
@@ -21,10 +20,9 @@ export const PrivateView = () =>
 {
     return (
     <>
-        <Header/>
         <Routes>
             <Route path='/create' Component = {EditMenu}/>
-            <Route path='/' Component = {Home}/>
+            <Route index path='/' Component = {Home}/>
             <Route path='/editCategoryIngredient' Component = {EditCategoryIngredient}></Route>
             <Route path='/editCategoryDish' Component = {EditCategoryDish}></Route>
             <Route path='/editIngredient' Component = {EditIngredient}></Route>

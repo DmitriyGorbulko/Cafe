@@ -3,6 +3,7 @@ import {CategoryDish, ICategoryDishProps} from '../CategoryDish/CategoryDish'
 import axios from 'axios';
 import { ICategoryDish } from '../../models/DishModels';
 import { CircularProgress, ImageList, ImageListItem, Typography } from '@mui/material';
+import { CategoryDishApi } from '../../api/categoryDishApi';
 
 const baseURL = "http://localhost:5000/";
 
@@ -12,7 +13,9 @@ export const CategoryDishPage = () => {
   const [isDone, setIsDone] = useState<boolean>(false)
 
   useEffect(() => {
-    axios.get("http://localhost:5000/get_all_category_dishes").then((response) => {
+    // axios.get("http://localhost:5000/get_all_category_dishes")
+    CategoryDishApi.getAll()
+    .then((response) => {
       setCategoryDish(response.data);
       console.log(categoryDish)
       setIsDone(true)

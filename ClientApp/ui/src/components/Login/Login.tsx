@@ -1,40 +1,23 @@
 import { Button, Stack, TextField } from "@mui/material";
-import { IDish } from "../../models/DishModels";
-import axios from "axios";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 
-// function ToHome() {
 
-// }
 
 interface IUser {
   name: string;
   password: string;
 }
 
-async function createUser() {
-  // 👇️ const data: CreateUserResponse
-  // const data = await axios.post<IDish>
-  // (
-  //   'http://api/auth/login',
-  //   {
-  //     name: 'string',
-  //     password: 'string'
-  //   }
-  // )
-}
 export const Login = () => {
   const { login } = useAuth();
   const [user, setUser] = useState({} as IUser);
 
-  const handleLogin = () => {
-    login({
-      id: "1",
-      name: user.name,
-      email: "john.doe@email.com",
+  const handleLogin = async() => {
+    await login({
+      email: user.name,
+      password: user.password 
     });
-    console.log('handle click')
   };
 
   return (
@@ -55,6 +38,7 @@ export const Login = () => {
         label="Password"
         id="password"
         color="primary"
+        onChange={(e) => setUser({...user, password: e.target.value})}
       />
       <Button
         fullWidth

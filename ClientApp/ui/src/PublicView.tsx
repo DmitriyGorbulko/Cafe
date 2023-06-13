@@ -8,8 +8,7 @@ export const PublicView = () => {
 
     return (
     <Routes>
-    <Route path='/login' Component = {Login}/>
+    <Route index path='/login' Component = {Login}/>
     <Route path='/registration' Component = {Registration}/>
-    <Route path='*' Component = {ErrorPage}/>
     </Routes>)
 }

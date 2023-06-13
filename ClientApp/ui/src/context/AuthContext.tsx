@@ -1,12 +1,11 @@
 import { createContext } from "react";
-import { User } from "../hooks/useUser";
 
 interface AuthContext {
-  user: User | null;
-  setUser?: (user: User | null) => void ;
+  token: string | null;
+  setToken: (token: string | null) => void ;
 }
 
 export const AuthContext = createContext<AuthContext>({
-  user: null,
-  setUser: () => {},
+  token: null,
+  setToken: () => {},
 });

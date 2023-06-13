@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 const LogoutButton = () => {
   const { logout } = useAuth();
 
-  return <Button style={{float: 'right'}} onClick={logout}>Выход</Button>;
+  return <Button onClick={logout}>Выход</Button>;
 };
 
 export default LogoutButton;
