@@ -1,4 +1,19 @@
 export enum Routes{
-    Root = '/'
-    
+    Root = '/',
+    Login = '/login',
+    Registration = '/registration',
+    Create = '/create',
+    EditCategoryIngredient = '/editCategoryIngredient', 
+    EditCategoryDish = '/editCategoryDish',
+    EditIngredient = '/editIngredient',
+    EditDish = '/editDish',
+    EditTable = '/editTable', 
+    CreateCategoryIngredient = '/editCategoryIngredient/create',
+    CreateCategoryDish = '/editCategoryDish/create',
+    CreateIngredient = '/editIngredient/create',
+    CreateDish = '/editDish/create',
+    CategoryDish = '/categoryDish',
+    GetDishes = '/dishPage/:id',
+    Basket = '/basket',
+    UpdateDish = '/editDish/update',
 }

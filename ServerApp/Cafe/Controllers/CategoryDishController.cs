@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Cafe.Controllers
 {
-    [Route("api/category_dish")]
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class CategoryDishController : ControllerBase
     {
         private readonly ICategoryDishService _categoryDishService;

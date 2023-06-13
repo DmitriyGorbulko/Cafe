@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cafe.Controllers
 {
-    [Route("api/category_ingredient")]
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class CategoryIngredientController : ControllerBase
     {
         private readonly ICategoryIngredientService _categoryIngredientService;

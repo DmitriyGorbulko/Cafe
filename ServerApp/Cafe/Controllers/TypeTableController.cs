@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Cafe.Controllers
 {
-    [Route("api/type_table")]
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class TypeTableController : ControllerBase
     {
         private readonly ITypeTableService _typeTableService;

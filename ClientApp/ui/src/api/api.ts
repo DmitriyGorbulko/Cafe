@@ -11,7 +11,7 @@ export interface ApiResponse<T> {
 
 export const initAxios = (errorHandler: (error: AxiosError) => void) => {
     
-	// ApiBase.defaults.baseURL = "/api/v1";
+	//ApiBase.defaults.baseURL = "/api/v1";
     ApiBase.defaults.baseURL = "http://localhost:5000";
     ApiBase.defaults.responseType = "json";
 

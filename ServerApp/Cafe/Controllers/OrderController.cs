@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Cafe.Controllers
 {
-    [Route("api/order")]
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;

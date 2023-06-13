@@ -12,7 +12,7 @@ export const DishPage = () => {
   const pageParams = useParams();
 
   useEffect(() => {
-    axios.get(`${API_URL}/dish/get_dish_by_category_id/${pageParams.id}`).then((response) => {
+    axios.get(`${API_URL}/v1/dish/get_dish_by_category_id/${pageParams.id}`).then((response) => {
       setDish(response.data as IDish[]);
       setIsDone(true)
     });

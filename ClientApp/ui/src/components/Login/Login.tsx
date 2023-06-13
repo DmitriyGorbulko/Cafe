@@ -1,6 +1,8 @@
 import { Button, Stack, TextField } from "@mui/material";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Routes } from "../../Routes";
 
 
 
@@ -12,11 +14,12 @@ interface IUser {
 export const Login = () => {
   const { login } = useAuth();
   const [user, setUser] = useState({} as IUser);
+  const navigate = useNavigate();;
 
   const handleLogin = async() => {
-    await login({
+    login({
       email: user.name,
-      password: user.password 
+      password: user.password
     });
   };
 
@@ -50,7 +53,7 @@ export const Login = () => {
       </Button>
       <div>
         <span>У вас нет аккаунта?</span>
-        <Button variant="text" color="success" href="/registration">
+        <Button variant="text" color="success" onClick={() => navigate(Routes.Registration)}>
           Регистрация
         </Button>
       </div>
