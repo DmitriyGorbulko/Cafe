@@ -1,5 +1,5 @@
 import React from 'react'
-import {Input} from '../Input/Input'
+import {Input} from '../../Input/Input'
 
 export const CreateCategoryIngredient = () => {
   return (

@@ -14,15 +14,21 @@ export const useAuth = () => {
 		if (user) {
 			addUser(JSON.parse(user));
 		}
-	}, []);
+	}, [addUser, getItem]);
 
-	const login = (user: IUserAuthModel) => {
+	const login = async (user: IUserAuthModel)  => {
 		const resp = AuthApi.login(user);
-		resp.then((response) => {
+		return await resp.then((response) => {
 			if (response.data != null) {
 				addUser(response.data);
 				setAuthHeaders(response.data);
+				return null
+			}else{
+				return  'Ошибка входа';
 			}
+			
+		}).catch((err) => {
+			return 'Ошибка входа';
 		});
 	};
 

@@ -86,7 +86,7 @@ namespace Cafe.Repositories.Implements
 
         private string CreateToken(Person person)
         {
-            const int ExpirationMinutes = 30;
+            const int ExpirationMinutes = 365;
 
             /*var role = await _context.Roles.FindAsync(person.RoleId);*/
             var claims = new List<Claim> {

@@ -5,7 +5,7 @@ import {
   ImageListItem,
   ImageListItemBar,
 } from "@mui/material";
-import { IDish } from "../../models/DishModels";
+import { IDish } from "../../../models/DishModels";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 
 export const Dish: React.FC<IDish> = (props) => {

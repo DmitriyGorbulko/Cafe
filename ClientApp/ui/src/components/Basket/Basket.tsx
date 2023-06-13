@@ -1,11 +1,11 @@
 import React from 'react'
-import {DishBuy} from '../DishBuy/DishBuy'
+import {BasketItem} from '../BasketItem/BasketItem'
 import { Button } from '@mui/material'
 
 export const Basket = () => {
   return (
     <div>
-        <DishBuy/>
+        <BasketItem/>
         <Button>Оплатить</Button>
     </div>
   )

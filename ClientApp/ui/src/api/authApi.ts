@@ -3,11 +3,12 @@ import Api from "./api";
 
 
 export class AuthApi {
+	
 	static register(data: IUserAuthModel) {
-		return Api.post<boolean>("/register", data);
+		return Api.post<boolean>("Auth/Register", data);
 	}
 
     static login(data: IUserAuthModel) {
-		return Api.post<string>("/login", data);
+		return Api.post<string>("Auth/Login", data);
 	}
 }

@@ -11,8 +11,8 @@ export interface ApiResponse<T> {
 
 export const initAxios = (errorHandler: (error: AxiosError) => void) => {
     
-	//ApiBase.defaults.baseURL = "/api/v1";
-    ApiBase.defaults.baseURL = "http://localhost:5000";
+	ApiBase.defaults.baseURL = "http://localhost:5000/api/v1";
+    // ApiBase.defaults.baseURL = "http://localhost:5000";
     ApiBase.defaults.responseType = "json";
 
 	ApiBase.interceptors.response.use(
@@ -55,6 +55,6 @@ export default class Api {
 	}
 
 	static put<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig<T>) {
-		return ApiBase.put<T, AxiosResponse<R>>(url, data), config;
+		return ApiBase.put<T, AxiosResponse<R>>(url, data, config);
 	}
 }

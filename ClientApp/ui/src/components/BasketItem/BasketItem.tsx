@@ -1,8 +1,8 @@
 import React from 'react'
-import {Ingredient} from '../Ingredient/Ingredient'
+import {Ingredient} from '../MenuComponents/Ingredient/Ingredient'
 import { Button } from '@mui/material'
 
-export const DishBuy = () => {
+export const BasketItem = () => {
   return (
     <div>
         <h1>Название</h1>

@@ -1,6 +1,7 @@
 import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../LogoutButton';
+import { Routes } from '../../Routes';
 
 interface IMenuItem{
   href: string;
@@ -9,11 +10,11 @@ interface IMenuItem{
 
 export const Header = () => {
   const pages: IMenuItem[] = [ 
-    {href:'/home', title: 'Главная'},
-    {href: '/create', title: 'Редактировать'},
-    {href: '/categoryDish', title: 'Меню'},
+    {href: Routes.Root, title: 'Главная'},
+    {href: Routes.ManageMenu, title: 'Редактировать'},
+    {href: Routes.CategoryDishes, title: 'Меню'},
     {href: '/kkrkr', title: 'Акции'},
-    {href: '/basket', title: 'Корзина'},
+    {href: Routes.Basket, title: 'Корзина'},
     {href: '/kkrkr', title: 'Доставка'},
     {href: '/kkrkr', title: 'О нас'},
 ];

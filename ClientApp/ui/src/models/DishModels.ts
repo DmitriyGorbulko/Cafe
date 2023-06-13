@@ -1,4 +1,4 @@
-import { IIngredient } from "../components/Ingredient/Ingredient";
+import { IIngredient } from "../components/MenuComponents/Ingredient/Ingredient";
 
 export interface ICategoryDish {
     id : number;
@@ -13,3 +13,17 @@ export interface IDish{
     categoryName: string;
     img?: string;
 }
+
+export interface ICreateDish {
+    title: string;
+    description: string;
+    categoryDishId: number;
+    recipe: string;
+  }
+
+  export interface IUpdateDish {
+    id : number
+    title: string;
+    description: string;
+    recipe: string;
+  }

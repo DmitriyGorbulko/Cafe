@@ -10,7 +10,7 @@ interface IEditFormProps {
 
 export const EditForm: React.FC<IEditFormProps> = (props) => {
     const pathCreate = props.hrefPart + '/create';  
-    const pathUpdate = props.hrefPart + '/update'; 
+    const pathUpdate = `${props.hrefPart}/manage`; 
     const navigation = useNavigate();
    
     return (

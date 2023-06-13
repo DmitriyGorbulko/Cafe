@@ -22,36 +22,36 @@ namespace Cafe.Controllers
 
 
         [HttpPost]
-        [Route("/create_category_dish")]
+        [Route(nameof(Create))]
         public async Task<ActionResult<CategoryDish>> Create(CategoryDishAddDTO categoryDish)
         {
             return Ok(await _categoryDishService.Create(categoryDish));
         }
 
         [HttpGet]
-        [Route("/get_category_dish")]
-        public async Task<ActionResult<CategoryDishGetDTO>> Get(int id)
+        [Route(nameof(Get) + "/{id}")]
+        public async Task<ActionResult<CategoryDishGetDTO>> Get([FromRoute]int id)
         {
             return Ok(await _categoryDishService.Get(id));
         }
 
         [HttpGet]
         [Authorize]
-        [Route("/get_all_category_dishes")]
+        [Route(nameof(GetAll))]
         public async Task<ActionResult<IEnumerable<CategoryDishGetDTO>>> GetAll()
         {
             return Ok(await _categoryDishService.GetAll());
         }
 
         [HttpPut]
-        [Route("/update_category_dish")]
+        [Route(nameof(Update))]
         public async Task<ActionResult<CategoryDish>> Update(CategoryDish categoryDish)
         {
             return Ok(await _categoryDishService.Update(categoryDish));
         }
 
         [HttpDelete]
-        [Route("/delete_category_dish")]
+        [Route(nameof(Delete))]
         public async Task Delete(int id)
         {
             await _categoryDishService.Delete(id);

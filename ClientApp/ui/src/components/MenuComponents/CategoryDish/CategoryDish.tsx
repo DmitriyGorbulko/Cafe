@@ -16,7 +16,7 @@ export const CategoryDish: FC<ICategoryDishProps> = (props) => {
   const navigation = useNavigate();
 
   const goToDishPage = (id: number) => {
-    navigation(`/dishPage/${id}`);
+    navigation(`/categoryDish/${id}/dishes`);
   };
 
   return (

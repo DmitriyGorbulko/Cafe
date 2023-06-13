@@ -16,7 +16,7 @@ function App() {
   const auth = useAuth()
   initAxios((error: AxiosError) => {
     try {
-      if (error && error.response?.status === 401 && !error.config?.url?.includes("account/signout")) {
+      if (error && error.response?.status === 401) {
         console.warn("Error. Unauthorized. Probably token was expired.");
         // auth.logout();
       }
@@ -33,8 +33,7 @@ function App() {
 		setToken(tok);
     if(tok != null)
       setAuthHeaders(tok.split('"')[1])
-		console.log(`${tok}`);
-	}, [token]);
+	}, [token, getItem]);
 
 	return (
 		<AuthContext.Provider value={{ token, setToken }}>

@@ -1,4 +1,4 @@
-import { IIngredient } from "../components/Ingredient/Ingredient";
+import { IIngredient } from "../components/MenuComponents/Ingredient/Ingredient";
 
 interface IDish{
     id: number;
