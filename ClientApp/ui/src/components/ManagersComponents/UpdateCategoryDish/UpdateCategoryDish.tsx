@@ -33,21 +33,18 @@ export const UpdateCategoryDish = () => {
 		}
 	};
 
-	const GetCategoryDish = () => {
-		if (pageParams.id !== undefined)
-			CategoryDishApi.getCategoryDishById(parseInt(pageParams.id)).then((resp) => {
-				setUpdateCategoryDish({
-					id: resp.data.id,
-					img: resp.data.img,
-					title: resp.data.title,
-				});
-				setIsDone(true);
-			});
-	};
-
+	
 	useEffect(() => {
-		GetCategoryDish();
-	});
+        if (pageParams.id !== undefined)
+        CategoryDishApi.getCategoryDishById(parseInt(pageParams.id)).then((resp) => {
+            setUpdateCategoryDish({
+                id: resp.data.id,
+                img: resp.data.img,
+                title: resp.data.title,
+            });
+            setIsDone(true);
+        });
+	}, [pageParams.id]);
 
 	return !isDone ? (
 		<div className="form_center">
