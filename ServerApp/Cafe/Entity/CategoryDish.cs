@@ -12,5 +12,8 @@ namespace Cafe.Entity
 
         [Column("title")]
         public string Title { get; set; }
+        
+        [Column("img")]
+        public string Img { get; set; }
     }
 }

@@ -23,6 +23,10 @@ namespace Cafe.Entity
         [ForeignKey(nameof(CategoryDish))]
         [Column("category_dish_id")]
         public int CategoryDishId { get; set; }
+        
+        [Column("img")]
+        public string Img { get; set; }
+        
         public virtual CategoryDish? CategoryDish { get; set; }
         public virtual ICollection<Ingredient> Ingredients { get; set; }
         public virtual ICollection<IngredientDish> IngredientLinks { get; set; }

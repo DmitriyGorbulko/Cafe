@@ -1,9 +1,7 @@
 import "./App.css";
-import { Registration } from "./components/Registration/Registration";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
-import { useAuth } from "./hooks/useAuth";
 import { PublicView } from "./PublicView";
 import { PrivateView } from "./PrivateView";
 import { useLocalStorage } from "./hooks/useLocalStorage";
@@ -12,8 +10,6 @@ import { initAxios, setAuthHeaders } from "./api/api";
 import { AxiosError } from "axios";
 
 function App() {
-
-  const auth = useAuth()
   initAxios((error: AxiosError) => {
     try {
       if (error && error.response?.status === 401) {
@@ -27,7 +23,7 @@ function App() {
 	const { getItem } = useLocalStorage();
 
 	const [token, setToken] = useState({} as string | null);
-
+	
 	useEffect(() => {
 		const tok = getItem("token");
 		setToken(tok);

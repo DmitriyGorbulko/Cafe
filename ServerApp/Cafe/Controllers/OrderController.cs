@@ -20,36 +20,36 @@ namespace Cafe.Controllers
         }
 
         [HttpPost]
-        [Route("/create_order")]
+        [Route(nameof(Create))]
         public async Task<ActionResult<Order>> Create(Order order)
         {
             return Ok(await _orderService.Create(order));
         }
 
         [HttpGet]
-        [Route("/get_order")]
-        public async Task<ActionResult<Order>> Get(int id)
+        [Route(nameof(Get) + "/{id}")]
+        public async Task<ActionResult<Order>> Get([FromRoute]int id)
         {
             return Ok(await _orderService.Get(id));
         }
 
         [HttpGet]
-        [Route("/get_orders")]
+        [Route(nameof(GetAll))]
         public async Task<ActionResult<IEnumerable<Order>>> GetAll()
         {
             return Ok(await _orderService.GetAll());
         }
 
         [HttpPut]
-        [Route("/update_order")]
+        [Route(nameof(Update))]
         public async Task<ActionResult<Order>> Update(Order order)
         {
             return Ok(await _orderService.Update(order));
         }
 
         [HttpDelete]
-        [Route("/delete_order")]
-        public async Task Delete(int id)
+        [Route(nameof(Delete) + "/{id}")]
+        public async Task Delete([FromRoute]int id)
         {
             await _orderService.Delete(id);
         }

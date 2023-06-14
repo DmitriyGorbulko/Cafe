@@ -1,9 +1,10 @@
-import { Box, CircularProgress, Grid, Paper, Typography } from "@mui/material";
+import { Box, Breadcrumbs, CircularProgress, Grid, Link, Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { IDish } from "../../../models/DishModels";
+import { IDish } from "../../../models/dishModels";
 import { useEffect, useState } from "react";
 import { dishApi } from "../../../api/DishApi";
 import { useNavigate } from "react-router-dom";
+import { Routes } from "../../../Routes";
 
 export const ManageDishes = () => {
 	const [dishes, setDises] = useState({} as IDish[]);
@@ -23,9 +24,15 @@ export const ManageDishes = () => {
 		</div>
 	) : (
 		<>
-			<Typography align="center" sx={{ marginY: "2%" }} variant="h3" component="h3">
-				Список блюд:
-			</Typography>
+		<Breadcrumbs sx={{ paddingLeft: "2%", paddingTop: "2%" }} aria-label="breadcrumb">
+				<Link underline="hover" color="inherit" onClick={() => navigate(Routes.Root)}>
+					Главная
+				</Link>
+				<Link underline="hover" color="inherit" onClick={() => navigate(Routes.ManageMenu)}>
+					Конфигурация меню
+				</Link>
+				<Typography color="text.primary">Список блюд</Typography>
+			</Breadcrumbs>
 			<Grid>
 				<Box
 					sx={{

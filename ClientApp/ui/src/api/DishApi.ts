@@ -1,4 +1,4 @@
-import { ICreateDish, IDish, IUpdateDish } from "../models/DishModels";
+import { ICreateDish, IDish, IUpdateDish } from "../models/dishModels";
 import Api from "./api";
 
 export class dishApi {

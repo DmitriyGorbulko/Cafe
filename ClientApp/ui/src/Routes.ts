@@ -12,6 +12,7 @@ export enum Routes{
     CategoryDish = '/categoryDish',
     CreateCategoryDish = '/categoryDish/create',
     UpdateCategoryDish = '/categoryDish/update/:id',
+    ManageCategoryDishes = '/categoryDish/manage',
     
     Ingredient = '/ingredient',
     CreateIngredient = '/ingredient/create',

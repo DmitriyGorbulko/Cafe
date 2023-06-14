@@ -13,14 +13,22 @@ namespace Cafe.Mappers
                 .ForMember(x => x.Description, opt => opt.MapFrom(y => y.Description))
                 .ForMember(x => x.Ingredients, opt => opt.MapFrom(y => y.Ingredients))
                 .ForMember(x => x.Title, opt => opt.MapFrom(y => y.Title))
-                .ForMember(x => x.Img, opt => opt.MapFrom(y => "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"))
-                .ForMember(x => x.CategoryName, opt => opt.MapFrom(y => y.CategoryDish != null ? y.CategoryDish.Title : "N/A"))
+                .ForMember(x => x.Img, opt => opt.MapFrom(y => !string.IsNullOrEmpty(y.Img)? y.Img :"https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"))
+                .ForMember(x => x.CategoryName, opt => opt.MapFrom(y => y.CategoryDishId != null ? y.CategoryDish.Title : "N/A"))
                 .ForAllOtherMembers(x => x.Ignore());
 
-            CreateMap<DishAddDTO, Dish>();
+            CreateMap<DishAddDTO, Dish>()
+                .ForMember(x => x.Description, opt => opt.MapFrom(y => y.Description))
+                .ForMember(x => x.Img, opt => opt.MapFrom(y => !string.IsNullOrEmpty(y.Img)? y.Img : "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"))
+                .ForMember(x => x.Recipe, opt => opt.MapFrom(y => y.Recipe))
+                .ForMember(x => x.Title, opt => opt.MapFrom(y => y.Title))
+                .ForMember(x => x.CategoryDishId, opt => opt.MapFrom(y => y.CAtegoryDishId))
+                .ForAllOtherMembers(x => x.Ignore());
+
             CreateMap<DishUpdateDTO, Dish>()
                 .ForMember(x => x.Description, opt => opt.MapFrom(y => y.Description))
                 .ForMember(x => x.Recipe, opt => opt.MapFrom(y => y.Recipe))
+                .ForMember(x => x.Img, opt => opt.MapFrom(y => !string.IsNullOrEmpty(y.Img)? y.Img : "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"))
                 .ForAllOtherMembers(x => x.Ignore());
         }
     }

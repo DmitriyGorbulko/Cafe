@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ICreateDish } from "../../../models/DishModels";
+import { ICreateDish } from "../../../models/dishModels";
 import {
 	Alert,
 	Button,
@@ -128,6 +128,19 @@ export const CreateDish = () => {
 							setCreateDish({
 								...createDish,
 								recipe: event.target.value,
+							})
+						}
+					/>
+					<TextField
+						fullWidth
+						variant="standard"
+						type="text"
+						placeholder="Image"
+						value={createDish.img}
+						onChange={(event) =>
+							setCreateDish({
+								...createDish,
+								img: event.target.value,
 							})
 						}
 					/>

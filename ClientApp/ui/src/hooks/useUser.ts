@@ -18,7 +18,5 @@ export const useUser = () => {
     setItem("token", "");
   };
 
-  const isAuth = !!token;
-
-  return { token, addUser, removeUser, isAuth };
+  return { token, addUser, removeUser };
 };

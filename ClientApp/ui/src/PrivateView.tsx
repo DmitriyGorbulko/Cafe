@@ -16,6 +16,8 @@ import { UpdateDish } from "./components/ManagersComponents/UpdateDish/UpdateDis
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Routes as PathRoutes } from "./Routes";
 import { ManageDishes } from "./components/ManagersComponents/EditDish/ManageDishes";
+import { ManageCatDishes } from "./components/ManagersComponents/EditCategoryDish/ManageCatDishes";
+import { UpdateCategoryDish } from "./components/ManagersComponents/UpdateCategoryDish/UpdateCategoryDish";
 
 export const PrivateView = () => {
 	return (
@@ -34,9 +36,11 @@ export const PrivateView = () => {
 				<Route path={PathRoutes.CreateDish} Component={CreateDish}></Route>
 				<Route path={PathRoutes.CategoryDishes} Component={CategoryDishPage}></Route>
 				<Route path={PathRoutes.ManageDishes} Component={ManageDishes}></Route>
+				<Route path={PathRoutes.ManageCategoryDishes} Component={ManageCatDishes}></Route>
 				<Route path={PathRoutes.Dishes} Component={DishPage}></Route>
 				<Route path={PathRoutes.Basket} Component={Basket}></Route>
 				<Route path={PathRoutes.UpdateDish} Component={UpdateDish}></Route>
+				<Route path={PathRoutes.UpdateCategoryDish} Component={UpdateCategoryDish}></Route>
 				<Route path="*" element={<Navigate replace to={PathRoutes.Root} />} />
 			</Routes>
 		</>

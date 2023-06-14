@@ -9,5 +9,7 @@
         public int CAtegoryDishId { get; set; }
 
         public string Recipe { get; set; }
+        
+        public string Img { get; set; }
     }
 }

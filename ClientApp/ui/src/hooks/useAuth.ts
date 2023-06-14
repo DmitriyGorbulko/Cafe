@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "./useUser";
 import { useLocalStorage } from "./useLocalStorage";
 import { AuthApi } from "../api/authApi";
@@ -6,13 +6,15 @@ import { IUserAuthModel } from "../models/authModels";
 import { setAuthHeaders } from "../api/api";
 
 export const useAuth = () => {
-	const { token, addUser, removeUser, isAuth } = useUser();
+	const { addUser, removeUser } = useUser();
 	const { getItem } = useLocalStorage();
-
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	
 	useEffect(() => {
-		const user = getItem("user");
+		const user = getItem("token");
 		if (user) {
 			addUser(JSON.parse(user));
+			setIsAuthenticated(true);
 		}
 	}, [addUser, getItem]);
 
@@ -22,6 +24,7 @@ export const useAuth = () => {
 			if (response.data != null) {
 				addUser(response.data);
 				setAuthHeaders(response.data);
+				setIsAuthenticated(true);
 				return null
 			}else{
 				return  'Ошибка входа';
@@ -34,7 +37,9 @@ export const useAuth = () => {
 
 	const logout = () => {
 		removeUser();
+		setIsAuthenticated(false);
 	};
 
-	return { token, login, logout, isAuth };
+	const isAuth = () => isAuthenticated;
+	return { login, logout, isAuth };
 };

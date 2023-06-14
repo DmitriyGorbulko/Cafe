@@ -55,6 +55,7 @@ export const Login = () => {
 				variant="standard"
 				fullWidth
 				label="Password"
+				type="password"
 				id="password"
 				color="primary"
 				onChange={(e) => setUser({ ...user, password: e.target.value })}
