@@ -10,12 +10,13 @@ import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRound
 
 export const Dish: React.FC<IDish> = (props) => {
   return (
-    <ImageListItem key={props.id}>
+    <ImageListItem key={props.id} sx={{maxHeight: '300px'}}>
       <img
         src={`${props.img}?w=500&fit=crop&auto=format`}
         srcSet={`${props.img}?w=500&fit=crop&auto=format&dpr=1 1x`}
         alt={props.title}
         loading="lazy"
+        style={{maxHeight: '300px'}}
       />
       <ImageListItemBar
         title={props.title}
