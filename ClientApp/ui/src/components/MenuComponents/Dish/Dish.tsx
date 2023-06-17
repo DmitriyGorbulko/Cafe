@@ -23,16 +23,18 @@ export const Dish: React.FC<IDish> = (props) => {
         subtitle={props.ingredients.map((x) => x.title).join(", ")}
         style={{ paddingRight: "10%" }}
         actionIcon={
-          <IconButton
+          <Button
             sx={{
               backgroundColor: "rgba(255, 255, 255, 0.6)",
               color: "rgba(0, 0, 0, 0.54)",
+              maxHeight: '40px',
+              width: '100px'
             }}
             aria-label={`Добавить в заказ ${props.title}`}
             onClick={() => console.log('добавлено')}
           >
-            <AddShoppingCartRoundedIcon fontSize="large" />
-          </IconButton>
+            <h4>250₽ </h4> <AddShoppingCartRoundedIcon sx={{ml: 2}} fontSize="small" />
+          </Button>
         }
       />
     </ImageListItem>
