@@ -34,13 +34,11 @@ function App() {
 	return (
 		<AuthContext.Provider value={{ token, setToken }}>
 			<Router>
+			<Header />
 				{!token ? (
 					<PublicView />
 				) : (
-					<>
-						<Header />
-						<PrivateView />
-					</>
+					<PrivateView />
 				)}
 			</Router>
 		</AuthContext.Provider>

@@ -9,6 +9,7 @@ export const useAuth = () => {
 	const { addUser, removeUser } = useUser();
 	const { getItem } = useLocalStorage();
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	let isAuth = isAuthenticated;
 	
 	useEffect(() => {
 		const user = getItem("token");
@@ -27,7 +28,7 @@ export const useAuth = () => {
 				setIsAuthenticated(true);
 				return null
 			}else{
-				return  'Ошибка входа';
+				return 'Ошибка входа';
 			}
 			
 		}).catch((err) => {
@@ -40,6 +41,5 @@ export const useAuth = () => {
 		setIsAuthenticated(false);
 	};
 
-	const isAuth = () => isAuthenticated;
 	return { login, logout, isAuth };
 };
